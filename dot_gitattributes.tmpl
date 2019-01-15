@@ -1,0 +1,5 @@
+# Automatically normalize line endings for all text-based files
+{{- if ne .chezmoi.os "darwin" }}
+* text=auto
+{{- end }}
+# Disabled because of https://github.com/mathiasbynens/dotfiles/issues/149 :(
