@@ -151,3 +151,5 @@ alias reload="exec ${SHELL} -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 alias spaths='ssh -A lcolomba@ssh.saclay.inria.fr'
+
+alias upgrade='brew upgrade && brew cask upgrade'
