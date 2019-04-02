@@ -13,4 +13,5 @@ LICENSE
 .exports
 .inputrc
 {{- else }}
+.profile.ps1
 {{- end }}
