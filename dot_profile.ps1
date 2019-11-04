@@ -1,4 +1,4 @@
-﻿<#
+<#
   .SYNOPSIS
       Cmder PowerShell Profile
 
@@ -13,7 +13,7 @@ Import-Module posh-git
 if (Get-Module posh-git) {
     function prompt {
         $GitPromptSettings.DefaultPromptPrefix.Text = '`n'
-        $GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Blue'
+        $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue
         $GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`n'
         & $GitPromptScriptBlock
     }
@@ -21,7 +21,6 @@ if (Get-Module posh-git) {
 
 # Load special features come from PSReadLine
 if (Get-Module PSReadLine) {
-    Set-PSReadlineOption -BellStyle None
     Set-PSReadlineOption -HistoryNoDuplicates
     Set-PSReadlineKeyHandler -Chord UpArrow -Function HistorySearchBackward
     Set-PSReadlineKeyHandler -Chord DownArrow -Function HistorySearchForward
@@ -40,6 +39,63 @@ if (Get-Module PSReadLine) {
         [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
         [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory($line)
         [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+    }
+
+    # This key handler shows the entire or filtered history using Out-GridView. The
+    # typed text is used as the substring pattern for filtering. A selected command
+    # is inserted to the command line without invoking. Multiple command selection
+    # is supported, e.g. selected by Ctrl + Click.
+    Set-PSReadlineKeyHandler -Chord F7 `
+                             -BriefDescription History `
+                             -LongDescription "Show command history" `
+                             -ScriptBlock {
+        $pattern = $null
+        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$pattern, [ref]$null)
+        if ($pattern)
+        {
+            $pattern = [regex]::Escape($pattern)
+        }
+
+        $history = [System.Collections.ArrayList]@(
+            $last = ''
+            $lines = ''
+            foreach ($line in [System.IO.File]::ReadLines((Get-PSReadlineOption).HistorySavePath))
+            {
+                if ($line.EndsWith('`'))
+                {
+                    $line = $line.Substring(0, $line.Length - 1)
+                    $lines = if ($lines)
+                    {
+                        "$lines`n$line"
+                    }
+                    else
+                    {
+                        $line
+                    }
+                    continue
+                }
+
+                if ($lines)
+                {
+                    $line = "$lines`n$line"
+                    $lines = ''
+                }
+
+                if (($line -cne $last) -and (!$pattern -or ($line -match $pattern)))
+                {
+                    $last = $line
+                    $line
+                }
+            }
+        )
+        $history.Reverse()
+
+        $command = $history | Out-GridView -Title History -PassThru
+        if ($command)
+        {
+            [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+            [Microsoft.PowerShell.PSConsoleReadLine]::Insert(($command -join "`n"))
+        }
     }
 
     # F1 for help on the command line - naturally
@@ -89,49 +145,4 @@ function mk ($src) {
 
 function ln ($src, $target) {
   New-Item -ItemType SymbolicLink -Path $src -Value $target
-}
-
-function serialize($a, $escape) {
-	if($a -is [string] -and $a -match '\s') { return "'$a'" }
-	if($a -is [array]) {
-		return $a | ForEach-Object { (serialize $_ $escape) -join ', ' }
-	}
-	if($escape) { return $a -replace '[>&]', '`$0' }
-	return $a
-}
-
-function sudo () {
-  $PsBoundParameters
-  $a = if ($args[0] -eq '!!') {
-    Get-History -Count 1 | Select-Object -ExpandProperty CommandLine
-  } else {
-    serialize $args $true
-  }
-
-  $src = 'using System.Runtime.InteropServices;
-    public class Kernel {
-      [DllImport("kernel32.dll", SetLastError = true)]
-      public static extern bool AttachConsole(uint dwProcessId);
-      [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-      public static extern bool FreeConsole();
-    }'
-
-  $Kernel = Add-Type $src -PassThru
-  $Kernel::FreeConsole()
-  $Kernel::AttachConsole($pid)
-
-  $Title = $Host.UI.RawUI.WindowTitle
-  $psi = New-Object System.Diagnostics.ProcessStartInfo
-  $psi.FileName = "powershell.exe"
-  $psi.Arguments = "-noprofile $a`nexit `$lastexitcode"
-  $psi.UseShellExecute = $false
-  $psi.WorkingDirectory = serialize (Convert-Path $pwd)
-  $psi.Verb = 'runAs'
-  $psi.CreateNoWindow = $true
-  $psi.WindowStyle = 'hidden'
-  $Process = New-Object System.Diagnostics.Process
-  $Process.StartInfo = $psi
-  [void]$Process.Start()
-  $Process.WaitForExit()
-  $Host.UI.RawUI.WindowTitle = $Title
 }
