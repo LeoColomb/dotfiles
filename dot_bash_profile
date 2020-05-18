@@ -49,5 +49,8 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
+# Add after `sudo` tab completion
+complete -cf sudo
+
 # Kube
 export KUBECONFIG=$HOME/.kube/config:$HOME/Projects/inria/configs/s-paths.saclay.inria.fr/kube.conf
