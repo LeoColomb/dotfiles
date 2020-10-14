@@ -1,13 +1,14 @@
 # https://github.com/Homebrew/homebrew-bundle
 
-tap "aylei/tap"
-tap "derailed/k9s"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "twpayne/taps"
+
+tap "aylei/tap"
+tap "derailed/k9s"
 
 brew "bash-completion"
 brew "bat"
+brew "chezmoi"
 brew "fzf"
 brew "helm"
 brew "kubernetes-cli"
@@ -15,7 +16,6 @@ brew "kubernetes-helm"
 brew "kubectx"
 brew "aylei/tap/kubectl-debug"
 brew "derailed/k9s/k9s"
-brew "twpayne/taps/chezmoi"
 
 {{- if eq .chezmoi.os "dariwn" }}
 tap "homebrew/cask"
