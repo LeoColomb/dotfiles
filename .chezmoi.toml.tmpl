@@ -1,0 +1,5 @@
+{{- $email := promptString "email" -}}
+{{- $signingKey := promptString "signing key" -}}
+[data]
+    email = "{{ $email }}"
+    signingKey = {{ $signingKey }}"
