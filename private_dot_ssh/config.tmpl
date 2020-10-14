@@ -1,8 +1,3 @@
 Host *
  AddKeysToAgent yes
  IdentityFile ~/.ssh/id_ed25519
-
-{{- range .ssh.aliases }}
-Host *.{{ .name }}
- ProxyCommand ssh {{ .user }}@{{ .host }} "/usr/bin/nc `basename %h .{{ .name }}` %p"
-{{- end }}
