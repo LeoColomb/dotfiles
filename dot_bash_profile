@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+export PATH="$HOME/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH";
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -53,4 +53,4 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 complete -cf sudo
 
 # Kube
-export KUBECONFIG=$HOME/.kube/config:$HOME/Projects/inria/configs/s-paths.saclay.inria.fr/kube.conf
+export KUBECONFIG=$HOME/.kube/config
