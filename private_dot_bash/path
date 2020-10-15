@@ -3,7 +3,7 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH";
 
-{{ if (contains "microsoft" .chezmoi.kernel.osrelease) }}
+{{- if (contains "microsoft" .chezmoi.kernel.osrelease) }}
 # Add WSL translated PATH
 export PATH="$PATH:$WSL_EXEC_PATH";
-{{ end }}
+{{- end }}
