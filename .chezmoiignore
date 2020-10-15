@@ -1,17 +1,16 @@
 README.md
 LICENSE
 
-{{- if eq .chezmoi.os "dariwn" }}
-{{- else }}
+{{- if ne .chezmoi.os "dariwn" }}
 .macos
-.brew
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
-.bash*
-.functions
-.exports
-.inputrc
+.bash
+.brew
+.*rc
+*file
 {{- else }}
-.profile.ps1
+AppData
+Documents
 {{- end }}

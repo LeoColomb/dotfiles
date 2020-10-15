@@ -1,6 +1,6 @@
 {{- $email := promptString "email" -}}
-{{- $signingKey := promptString "signing key" -}}
+{{- $gpg := promptString "signing key" -}}
 
 [data]
     email = "{{ $email }}"
-    signingKey = "{{ $signingKey }}"
+    gpg = "{{ $gpg }}"

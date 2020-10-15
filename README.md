@@ -5,23 +5,15 @@
 
 ## Usage
 
-* Clone the repository
+* Install [`chezmoi`](https://www.chezmoi.io/)
+* Init with `chezmoi`
   ```bash
-  $ git clone https://github.com/LeoColomb/dotfiles.git
+  $ chezmoi init https://github.com/LeoColomb/dotfiles.git
   ```
-* Install [`chezmoi`](https://github.com/twpayne/chezmoi)
-* Prepare with the configuration file
 * Apply template
   ```bash
-  $ chezmoi -v apply
+  $ chezmoi apply
   ```
-
-
-## References
-
-OS|dotfiles
----|---
-UNIX|[mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
 
 ## License
