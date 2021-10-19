@@ -5,15 +5,7 @@
 
 ## Usage
 
-* Install [`chezmoi`](https://www.chezmoi.io/)
-* Init with `chezmoi`
-  ```bash
-  $ chezmoi init https://github.com/LeoColomb/dotfiles.git
-  ```
-* Apply template
-  ```bash
-  $ chezmoi apply
-  ```
+See [`chezmoi` official documentation](https://www.chezmoi.io/)
 
 
 ## License

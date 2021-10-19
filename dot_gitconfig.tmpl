@@ -92,9 +92,11 @@
 	pushInsteadOf = "git@gist.github.com:"
 
 [user]
-	name = Léo Colombaro
+	name = {{ .name }}
 	email = {{ .email }}
+{{- if .gpg }}
 	signingKey = {{ .gpg }}
+{{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
 [gpg]

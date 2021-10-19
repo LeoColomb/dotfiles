@@ -1,6 +1,37 @@
-{{- $email := promptString "email" -}}
-{{- $gpg := promptString "signing key" -}}
+{{- /* Checks if running interactively, which is not the case for GitHub Codespaces */ -}}
+{{- $interactive := stdinIsATTY -}}
+
+{{- $name := "Your Name" -}}
+{{- /* If name was previously set, reuses it */ -}}
+{{- if hasKey . "name" -}}
+{{-   $name = .name -}}
+{{- else if (env "GITHUB_USER") -}}
+{{-   $name = env "GITHUB_USER" -}}
+{{- else if $interactive -}}
+{{-   $name = promptString "name" $name -}}
+{{- end -}}
+
+{{- $email := "email@example.com" -}}
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- else if (env "GIT_COMMITTER_EMAIL") -}}
+{{-   $email = env "GIT_COMMITTER_EMAIL" -}}
+{{- else if $interactive -}}
+{{-   $email = promptString "email" $email -}}
+{{- end -}}
+
+{{- $gpg := "" -}}
+{{- if $interactive -}}
+{{-   $gpg := promptString "signing key" -}}
+{{- end -}}
+
+{{- if $interactive -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+{{- end -}}
+
+sourceDir = "{{ .chezmoi.sourceDir }}"
 
 [data]
+    name = "{{ $name }}"
     email = "{{ $email }}"
     gpg = "{{ $gpg }}"
