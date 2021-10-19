@@ -96,20 +96,21 @@
 	email = {{ .email }}
 {{- if .gpg }}
 	signingKey = {{ .gpg }}
-{{- end }}
-
-{{- if eq .chezmoi.os "windows" }}
-[gpg]
- 	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
-{{- end }}
 
 [tag]
 	forceSignAnnotated = true
 [commit]
 	gpgSign = true
+
+{{-   if eq .chezmoi.os "windows" }}
+[gpg]
+ 	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
+{{-   end }}
+{{- end }}
+
 [diff]
-  # Detect copies as well as renames
-  renames = copies
+	# Detect copies as well as renames
+	renames = copies
 
 [color "branch"]
 	current = yellow reverse
@@ -131,3 +132,6 @@
 
 [protocol]
 	version = 2
+
+[init]
+	defaultBranch = main
