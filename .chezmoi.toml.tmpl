@@ -5,8 +5,8 @@
 {{- /* If name was previously set, reuses it */ -}}
 {{- if hasKey . "name" -}}
 {{-   $name = .name -}}
-{{- else if (env "GITHUB_USER") -}}
-{{-   $name = env "GITHUB_USER" -}}
+{{- else if (env "GIT_CONFIG_USER_NAME") -}}
+{{-   $name = env "GIT_CONFIG_USER_NAME" -}}
 {{- else if $interactive -}}
 {{-   $name = promptString "name" $name -}}
 {{- end -}}
@@ -14,8 +14,8 @@
 {{- $email := "email@example.com" -}}
 {{- if hasKey . "email" -}}
 {{-   $email = .email -}}
-{{- else if (env "GIT_COMMITTER_EMAIL") -}}
-{{-   $email = env "GIT_COMMITTER_EMAIL" -}}
+{{- else if (env "GIT_CONFIG_USER_EMAIL") -}}
+{{-   $email = env "GIT_CONFIG_USER_EMAIL" -}}
 {{- else if $interactive -}}
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
