@@ -2,4 +2,6 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-dot_git* linguist-language=Git Config
+dot_gitconfig.tmpl linguist-language=gitconfig
+dot_gitattributes.tmpl linguist-language=gitattributes
+dot_editorconfig linguist-language=editor-config
