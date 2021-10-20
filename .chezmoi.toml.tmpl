@@ -20,11 +20,11 @@
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
 
-{{- $signingKey := "" -}}
-{{- if hasKey . "signingKey" -}}
-{{-   $signingKey = .signingKey -}}
+{{- $signingkey := "" -}}
+{{- if hasKey . "signingkey" -}}
+{{-   $signingkey = .signingkey -}}
 {{- else if $interactive -}}
-{{-   $signingKey := promptString "signing key" -}}
+{{-   $signingkey := promptString "signing key" -}}
 {{- end -}}
 
 {{- if $interactive -}}
@@ -36,4 +36,4 @@ sourceDir = "{{ .chezmoi.sourceDir }}"
 [data]
     name = "{{ $name }}"
     email = "{{ $email }}"
-    signingKey = "{{ $signingKey }}"
+    signingkey = "{{ $signingkey }}"
