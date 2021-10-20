@@ -33,7 +33,6 @@ if (Get-Module PSReadLine) {
                              -BriefDescription SaveInHistory `
                              -LongDescription "Save current line in history but do not execute" `
                              -ScriptBlock {
-        param($key, $arg)
         $line = $null
         $cursor = $null
         [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
@@ -103,8 +102,6 @@ if (Get-Module PSReadLine) {
                              -BriefDescription CommandHelp `
                              -LongDescription "Open the help window for the current command" `
                              -ScriptBlock {
-        param($key, $arg)
-
         $ast = $null
         $tokens = $null
         $errors = $null

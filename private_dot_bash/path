@@ -15,9 +15,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH;
+# set PATH so it includes WSL bin if it exists
+if [ -d "$WSL_EXEC_PATH" ] ; then
+    PATH="$PATH:$WSL_EXEC_PATH"
+fi
 
-{{- if (contains "microsoft" .chezmoi.kernel.osrelease) }}
-# Add WSL translated PATH
-export PATH="$PATH:$WSL_EXEC_PATH";
-{{- end }}
+export PATH;
