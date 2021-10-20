@@ -78,7 +78,7 @@
 [remote "upstream"]
 	fetch = +refs/heads/*:refs/remotes/upstream/*
 
-{{- if .isTTY }}
+{{- if env "CODESPACES" | not }}
 [url "git@gitlab.com:"]
 	insteadOf = "gitlab:"
 	pushInsteadOf = "git://gitlab.com/"
