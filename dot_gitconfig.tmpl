@@ -78,6 +78,7 @@
 [remote "upstream"]
 	fetch = +refs/heads/*:refs/remotes/upstream/*
 
+{{- if stdinIsATTY }}
 [url "git@gitlab.com:"]
 	insteadOf = "gitlab:"
 	pushInsteadOf = "git://gitlab.com/"
@@ -90,6 +91,7 @@
 	insteadOf = "gist:"
 	pushInsteadOf = "git://gist.github.com/"
 	pushInsteadOf = "git@gist.github.com:"
+{{- end }}
 
 [user]
 	name = {{ .name }}
