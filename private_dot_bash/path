@@ -16,7 +16,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set PATH so it includes WSL bin if it exists
-if [ -d "$WSL_EXEC_PATH" ] ; then
+if [ -n "$WSL_EXEC_PATH" ] ; then
     PATH="$PATH:$WSL_EXEC_PATH"
 fi
 
