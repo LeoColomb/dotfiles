@@ -59,11 +59,7 @@
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
 	untrackedCache = true
 	editor = code --wait
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+
 [help]
 	autoCorrect = 10
 [push]
@@ -72,6 +68,12 @@
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 	recurseSubmodules = check
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 
 [remote "upstream"]
 	fetch = +refs/heads/*:refs/remotes/upstream/*

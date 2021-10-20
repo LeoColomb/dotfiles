@@ -24,11 +24,11 @@
 {{- if hasKey . "signingkey" -}}
 {{-   $signingkey = .signingkey -}}
 {{- else if $interactive -}}
-{{-   $signingkey := promptString "signing key" -}}
+{{-   $signingkey = promptString "signing key" -}}
 {{- end -}}
 
 {{- if $interactive -}}
-{{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
 sourceDir = "{{ .chezmoi.sourceDir }}"
