@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2139
 
+##
+## Bash command aliases
+##
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."

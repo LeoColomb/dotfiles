@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+##
+## Bash `$PATH` extension
+##
+
 # set PATH so it includes krew's private bin if it exists
 if [ -d "${KREW_ROOT:-$HOME/.krew}/bin" ] ; then
     PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

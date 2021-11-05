@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+##
+## Bash completion handlers
+##
+
 # Add tab completion for many Bash commands
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";

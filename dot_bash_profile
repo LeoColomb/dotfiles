@@ -7,19 +7,17 @@ case $- in
       *) return;;
 esac
 
-# Load the shell dotfiles, and then some:
-# * ~/.bash/path can be used to extend `$PATH`.
-# * ~/.bash/extra can be used for other settings you don’t want to commit.
-# shellcheck source=private_dot_bash/prompt
+# Load the shell dotfiles.
+# ~/.bash/extra can be used for other settings you don’t want to commit.
 for file in ~/.bash/{\
 path,\
 prompt,\
 exports,\
 aliases,\
 functions,\
-extra,\
 options,\
-completion\
+completion,\
+extra\
 }; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;

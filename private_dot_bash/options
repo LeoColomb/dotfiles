@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# https://wiki.bash-hackers.org/internals/shell_options
+
+##
+## Bash usage options
+## https://wiki.bash-hackers.org/internals/shell_options
+##
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
