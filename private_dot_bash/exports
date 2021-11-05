@@ -30,6 +30,3 @@ export GPG_TTY
 
 # Default k8s config file
 export KUBECONFIG="$HOME/.kube/config";
-
-# Default nvm local dir
-export NVM_DIR="$HOME/.nvm"
