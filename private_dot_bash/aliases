@@ -163,6 +163,9 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-alias spaths='ssh -A lcolomba@ssh.saclay.inria.fr'
+# Laravel Sail
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
-alias upgrade='brew upgrade && brew cask upgrade'
+# Package managers
+alias composer='docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app -v ~/.composer:/tmp composer'
+alias npm='docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app -w /app -v ~/.npm:~/.npm node npm'
