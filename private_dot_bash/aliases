@@ -168,4 +168,4 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 # Package managers
 alias composer='docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app -v ~/.composer:/tmp composer'
-alias npm='docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app -w /app -v ~/.npm:~/.npm node npm'
+alias npm='docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app -w /app -v ~/.npm:/home/node/.npm node npm'
