@@ -89,16 +89,15 @@
 	insteadOf = "gist:"
 	pushInsteadOf = "git://gist.github.com/"
 	pushInsteadOf = "https://gist.github.com/"
-{{- end }}
 
 [user]
-{{- if .name }}
+{{-   if .name }}
 	name = {{ .name }}
-{{- end }}
-{{- if .email }}
+{{-   end }}
+{{-   if .email }}
 	email = {{ .email }}
-{{- end }}
-{{- if .signingkey }}
+{{-   end }}
+{{-   if .signingkey }}
 	signingKey = {{ .signingkey }}
 
 [tag]
@@ -106,9 +105,10 @@
 [commit]
 	gpgSign = true
 
-{{-   if eq .chezmoi.os "windows" }}
+{{-     if eq .chezmoi.os "windows" }}
 [gpg]
  	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
+{{-     end }}
 {{-   end }}
 {{- end }}
 
