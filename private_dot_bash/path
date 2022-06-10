@@ -24,6 +24,19 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# rustup shell setup
+# affix colons on either side of $PATH to simplify matching
+if [ -d "$HOME/.cargo/bin" ] ; then
+    case ":${PATH}:" in
+        *:"$HOME/.cargo/bin":*)
+            ;;
+        *)
+            # Prepending path in case a system-installed rustc needs to be overridden
+            export PATH="$HOME/.cargo/bin:$PATH"
+            ;;
+    esac
+fi
+
 # set PATH so it includes WSL bin if it exists
 if [ -n "$WSL_EXEC_PATH" ] ; then
     PATH="$PATH:$WSL_EXEC_PATH"
