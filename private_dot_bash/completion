@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
 
 ##
+## Bash pre-exec handler
+## https://github.com/rcaloras/bash-preexec
+##
+
+if [ -f /home/linuxbrew/.linuxbrew/etc/profile.d/bash-preexec.sh ]; then
+	source /home/linuxbrew/.linuxbrew/etc/profile.d/bash-preexec.sh
+fi
+
+##
 ## Bash completion handlers
 ##
 
 # Add tab completion for many Bash commands
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";
-fi;
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 if which brew &>/dev/null; then
   HOMEBREW_PREFIX="$(brew --prefix)"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
