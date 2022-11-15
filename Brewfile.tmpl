@@ -3,6 +3,9 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
 
+brew "gcc"
+brew "util-linux"
+
 brew "atuin"
 brew "bash-completion"
 brew "bash-preexec"
@@ -22,6 +25,7 @@ brew "kubectx"
 brew "nmap"
 brew "openssh"
 brew "ssh-copy-id"
+brew "topgrade"
 brew "volta"
 
 {{- if eq .chezmoi.os "dariwn" }}
