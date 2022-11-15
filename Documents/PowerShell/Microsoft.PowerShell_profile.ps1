@@ -8,16 +8,13 @@
   .LINK
       https://github.com/bliker/cmder
 #>
-Import-Module posh-git
-# Set up a Cmder prompt, adding the git prompt parts inside git repos
-if (Get-Module posh-git) {
-    function prompt {
-        $GitPromptSettings.DefaultPromptPrefix.Text = '`n'
-        $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue
-        $GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`n'
-        & $GitPromptScriptBlock
-    }
+
+function prompt {
+    Write-Host
+    Write-Host $ExecutionContext.SessionState.Path.CurrentLocation -ForegroundColor Blue
+    "$('>' * ($nestedPromptLevel + 1)) "
 }
+
 
 # Load special features come from PSReadLine
 if (Get-Module PSReadLine) {
@@ -33,6 +30,7 @@ if (Get-Module PSReadLine) {
                              -BriefDescription SaveInHistory `
                              -LongDescription "Save current line in history but do not execute" `
                              -ScriptBlock {
+        param($key, $arg)
         $line = $null
         $cursor = $null
         [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
@@ -102,6 +100,8 @@ if (Get-Module PSReadLine) {
                              -BriefDescription CommandHelp `
                              -LongDescription "Open the help window for the current command" `
                              -ScriptBlock {
+        param($key, $arg)
+
         $ast = $null
         $tokens = $null
         $errors = $null
@@ -133,13 +133,4 @@ if (Get-Module PSReadLine) {
             }
         }
     }
-}
-
-function mk ($src) {
-  New-Item -ItemType Directory -Path $src
-  Set-Location $src
-}
-
-function ln ($src, $target) {
-  New-Item -ItemType SymbolicLink -Path $src -Value $target
 }
