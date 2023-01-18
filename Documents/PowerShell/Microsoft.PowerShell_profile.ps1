@@ -11,6 +11,10 @@
 
 function prompt {
     Write-Host
+    Write-Host $env:UserName -ForegroundColor DarkYellow -NoNewline
+    Write-Host " at " -NoNewline
+    Write-Host $env:UserDomain -ForegroundColor DarkGreen -NoNewline
+    Write-Host " in " -NoNewline
     Write-Host $ExecutionContext.SessionState.Path.CurrentLocation -ForegroundColor Blue
     "$('>' * ($nestedPromptLevel + 1)) "
 }
