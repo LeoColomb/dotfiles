@@ -86,5 +86,7 @@ alias docker-run-current='docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 # Package managers
-alias composer='docker-run-current -v ~/.composer:/tmp composer'
-alias npm='docker-run-current -v ~/.npm:/home/node/.npm node npm'
+if [ -z "${CODESPACES}" ]; then
+	alias composer='docker-run-current -v ~/.composer:/tmp composer'
+	alias npm='docker-run-current -v ~/.npm:/home/node/.npm node npm'
+fi
