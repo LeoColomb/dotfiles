@@ -88,5 +88,5 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 # Package managers
 if [ -z "${CODESPACES}" ]; then
 	alias composer='docker-run-current -v ~/.composer:/tmp composer'
-	alias npm='docker-run-current -v ~/.npm:/home/node/.npm node npm'
+	# alias npm='docker-run-current -v ~/.npm:/home/node/.npm node npm'
 fi
