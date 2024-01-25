@@ -1,4 +1,4 @@
-# dotfiles
+# .files
 
 > 🔧 .files OS agnostic
 
