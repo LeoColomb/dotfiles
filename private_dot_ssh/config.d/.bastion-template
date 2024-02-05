@@ -1,0 +1,8 @@
+Host bastion
+    HostName bastion.internal
+    Port 22
+
+Host *.internal
+    IdentityFile /home/leo/.ssh/id_ed25519
+    User internal-username
+    ProxyCommand ssh b1 nc %h %p
