@@ -1,8 +1,9 @@
-Host bastion
-    HostName bastion.internal
+Host jumphost
+    HostName jumphost.internal
+    User internal-username
     Port 22
 
 Host *.internal
-    IdentityFile /home/leo/.ssh/id_ed25519
+    IdentityFile ~/.ssh/id_ed25519
     User internal-username
-    ProxyCommand ssh b1 nc %h %p
+    ProxyCommand ssh -W %h:%p jumphost
