@@ -5,4 +5,4 @@ Host {{ .internal.jumphost.name }}
 
 Host *.{{ .internal.domain }}
     User {{ .internal.user }}
-    ProxyJump {{ .internal.jumphost }}
+    ProxyJump {{ .internal.jumphost.name }}
