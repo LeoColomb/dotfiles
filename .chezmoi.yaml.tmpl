@@ -33,7 +33,7 @@
 {{- $intJumpPort := "" -}}
 {{- if $interactive -}}
 {{-   $intDomain = promptString "internal domain" -}}
-{{-   if hasKey . "intDomain" -}}
+{{-   if $intDomain -}}
 {{-     $intUser = promptString "internal user" -}}
 {{-     $intJumpName = promptString "internal jumphost name" -}}
 {{-     $intJumpPort = promptString "internal jumphost port" -}}

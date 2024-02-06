@@ -18,6 +18,6 @@ AppData
 Documents
 {{- end }}
 
-{{- if eq .internal.domain "" }}
+{{- if .internal.domain }}
 .ssh/config.d/internal
 {{- end }}
