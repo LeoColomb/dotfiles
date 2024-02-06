@@ -1,0 +1,20 @@
+# https://github.com/topgrade-rs/topgrade
+
+[misc]
+# Disable specific steps - same options as the command line flag
+disable = ["snap"]
+
+[git]
+# How many repos to pull at max in parallel
+# max_concurrency = 5
+
+# Additional git repositories to pull
+repos = [
+    "~/projects/*",
+]
+
+# Don't pull the predefined git repos
+# pull_predefined = false
+
+# Arguments to pass Git when pulling Repositories
+# arguments = "--rebase --autostash"
