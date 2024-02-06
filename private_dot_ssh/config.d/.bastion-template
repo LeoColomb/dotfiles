@@ -2,8 +2,9 @@ Host jumphost
     HostName jumphost.internal
     User internal-username
     Port 22
+    ControlMaster auto
+    ControlPersist yes
 
 Host *.internal
-    IdentityFile ~/.ssh/id_ed25519
     User internal-username
-    ProxyCommand ssh -W %h:%p jumphost
+    ProxyJump jumphost
