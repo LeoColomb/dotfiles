@@ -27,6 +27,10 @@
 {{-   $signingkey = promptString "signing key" -}}
 {{- end -}}
 
+{{- $intJumpName := "" -}}
+{{- $intUser := "" -}}
+{{- $intJumpName := "" -}}
+{{- $intJumpPort := "" -}}
 {{- if $interactive -}}
 {{-   $intDomain = promptString "internal domain" -}}
 {{-   if hasKey . "intDomain" -}}
