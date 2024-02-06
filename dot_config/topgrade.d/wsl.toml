@@ -4,7 +4,6 @@
 # Disable specific steps - same options as the command line flag
 disable = ["snap"]
 
-
 # Ignore failures for these steps
 ignore_failures = ["containers"]
 
@@ -14,7 +13,7 @@ ignore_failures = ["containers"]
 
 # Additional git repositories to pull
 repos = [
-    "~/projects/*",
+    "~/projects/*/*/*/",
 ]
 
 # Don't pull the predefined git repos
