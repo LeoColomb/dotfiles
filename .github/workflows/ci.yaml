@@ -12,7 +12,7 @@ jobs:
       env:
         CODESPACES: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: ./install.sh
       - name: chezmoi data
         run: '"$HOME/.local/bin/chezmoi" data'
