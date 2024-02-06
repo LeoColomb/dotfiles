@@ -4,6 +4,10 @@
 # Disable specific steps - same options as the command line flag
 disable = ["snap"]
 
+
+# Ignore failures for these steps
+ignore_failures = ["containers"]
+
 [git]
 # How many repos to pull at max in parallel
 # max_concurrency = 5
