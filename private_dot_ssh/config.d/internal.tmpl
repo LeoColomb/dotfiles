@@ -1,0 +1,8 @@
+Host {{ .internal.jumphost.name }}
+    HostName {{ .internal.jumphost.name }}.{{ .internal.domain }}
+    User {{ .internal.user }}
+    Port {{ .internal.jumphost.port }}
+
+Host *.{{ .internal.domain }}
+    User {{ .internal.user }}
+    ProxyJump {{ .internal.jumphost }}

@@ -17,3 +17,7 @@ LICENSE
 AppData
 Documents
 {{- end }}
+
+{{- if eq .internal.domain "" }}
+.ssh/config.d/internal
+{{- end }}

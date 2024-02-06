@@ -28,6 +28,15 @@
 {{- end -}}
 
 {{- if $interactive -}}
+{{-   $intDomain = promptString "internal domain" -}}
+{{-   if hasKey . "intDomain" -}}
+{{-     $intUser = promptString "internal user" -}}
+{{-     $intJumpName = promptString "internal jumphost name" -}}
+{{-     $intJumpPort = promptString "internal jumphost port" -}}
+{{-   end -}}
+{{- end -}}
+
+{{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
@@ -37,3 +46,10 @@ data:
   name: "{{ $name }}"
   email: "{{ $email }}"
   signingkey: "{{ $signingkey }}"
+
+  internal:
+    jumphost:
+      name: "{{ $intJumpName }}"
+      port: "{{ $intJumpPort }}"
+    domain: "{{ $intDomain }}"
+    user: "{{ $intUser }}"
