@@ -2,8 +2,7 @@ Host *
     AddKeysToAgent yes
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
-    ForwardX11 no
+    ServerAliveCountMax 20
     ServerAliveInterval 30
-    ServerAliveCountMax 2
 
 Include config.d/*
