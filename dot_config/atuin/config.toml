@@ -37,3 +37,13 @@ search_mode = "fulltext"
 ## what to do when the escape key is pressed when searching
 ## possible values: return-original, return-query
 # exit_mode = "return-original"
+
+## Defaults to true. If enabled, upon hitting enter Atuin will immediately execute the command. Press tab to return to the shell and edit.
+# This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
+enter_accept = true
+
+# network_connect_timeout = 5
+network_timeout = 1
+
+## Timeout (in seconds) for acquiring a local database connection (sqlite)
+local_timeout = 1
