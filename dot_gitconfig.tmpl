@@ -1,3 +1,6 @@
+# https://git-scm.com/docs/git-config
+
+## Aliases
 [alias]
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --oneline -n 20 --graph --decorate
@@ -26,8 +29,7 @@
 
 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 
-[apply]
-	whitespace = fix
+## System Wide
 [core]
 	autocrlf = input
 	eol = lf
@@ -50,27 +52,83 @@
 	editor = code --wait
 {{- if env "CODESPACES" | not }}
 	pager = delta
-
 [interactive]
 	diffFilter = delta --color-only --features=interactive
-{{-   end }}
-
+{{- end }}
+[delta]
+	side-by-side = true
+	hyperlinks = true
+	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[delta "interactive"]
+	keep-plus-minus-markers = false
+[protocol]
+	version = 2
+[init]
+	defaultBranch = main
+[apply]
+	whitespace = fix
 [help]
 	autoCorrect = prompt
+
+{{- if env "CODESPACES" | not }}
+## Local Workflow
+[user]
+{{-   if .name }}
+	name = {{ .name }}
+{{-   end }}
+{{-   if .email }}
+	email = {{ .email }}
+{{-   end }}
+{{-   if .signingkey }}
+	signingKey = {{ .signingkey }}
+{{-   end }}
+{{- end }}
+[tag]
+	forceSignAnnotated = true
+[commit]
+	gpgSign = true
+[gpg]
+{{- if eq .chezmoi.os "windows" }}
+ 	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
+{{- else }}
+	format = ssh
+{{- end }}
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+	algorithm = histogram
+	context = 10
+[diff "bin"]
+	# Use `hexdump` to diff binary files
+	textconv = hexdump -v -C
+
+## Push-Pull & Protocol Related
 [push]
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 	recurseSubmodules = check
+	default = current
+[pull]
+	rebase = true
+[rebase]
+	autosquash = true
+	autostash = true
+	missingCommitsCheck = error
+	updateRefs = true
+[merge]
+	conflictStyle = zdiff3
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+	prune = true
+	prunetags = true
+[receive]
+	fsckobjects = true
 
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-
+## Remotes
 [remote "upstream"]
 	fetch = +refs/heads/*:refs/remotes/upstream/*
-
 {{- if env "CODESPACES" | not }}
 [url "git@gitlab.com:"]
 	insteadOf = "gitlab:"
@@ -84,33 +142,16 @@
 	insteadOf = "gist:"
 	pushInsteadOf = "git://gist.github.com/"
 	pushInsteadOf = "https://gist.github.com/"
-
-[user]
-{{-   if .name }}
-	name = {{ .name }}
-{{-   end }}
-{{-   if .email }}
-	email = {{ .email }}
-{{-   end }}
-{{-   if .signingkey }}
-	signingKey = {{ .signingkey }}
-
-[tag]
-	forceSignAnnotated = true
-[commit]
-	gpgSign = true
-
-{{-     if eq .chezmoi.os "windows" }}
-[gpg]
- 	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
-{{-     end }}
-{{-   end }}
 {{- end }}
 
-[diff]
-	# Detect copies as well as renames
-	renames = copies
+## Plugins
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 
+## Colors
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -125,23 +166,6 @@
 	changed = green
 	untracked = cyan
 
-[diff "bin"]
-	# Use `hexdump` to diff binary files
-	textconv = hexdump -v -C
-
-[protocol]
-	version = 2
-
-[init]
-	defaultBranch = main
-
+## Tools
 [ghq]
 	root = ~/projects
-
-[delta]
-	side-by-side = true
-	hyperlinks = true
-	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
-
-[delta "interactive"]
-	keep-plus-minus-markers = false
