@@ -82,16 +82,16 @@
 {{-   if .signingkey }}
 	signingKey = {{ .signingkey }}
 {{-   end }}
-{{- end }}
 [tag]
 	forceSignAnnotated = true
 [commit]
 	gpgSign = true
 [gpg]
-{{- if eq .chezmoi.os "windows" }}
+{{-   if eq .chezmoi.os "windows" }}
  	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
-{{- else }}
+{{-   else }}
 	format = ssh
+{{-   end }}
 {{- end }}
 [diff]
 	# Detect copies as well as renames
