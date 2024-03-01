@@ -1,0 +1,13 @@
+# https://learn.microsoft.com/en-us/windows/wsl/wsl-config
+
+# Settings apply across all Linux distros running on WSL 2
+[wsl2]
+
+# Enforces WSL to use Windows’ HTTP proxy information
+autoProxy=true
+
+# Enable experimental features
+[experimental]
+
+# When set to true, any newly created VHD will be set to sparse automatically.
+sparseVhd=true
