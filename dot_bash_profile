@@ -11,12 +11,13 @@ esac
 # ~/.bash/extra can be used for other settings you don’t want to commit.
 for file in ~/.bash/{\
 path,\
-prompt,\
 exports,\
+completion,\
+theme,\
+prompt,\
 aliases,\
 functions,\
 options,\
-completion,\
 extra\
 }; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
