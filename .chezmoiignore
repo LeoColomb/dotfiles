@@ -17,6 +17,7 @@ LICENSE
 .wslconfig
 AppData
 Documents
+winget.json
 {{- end }}
 
 {{- if not .internal.domain }}
