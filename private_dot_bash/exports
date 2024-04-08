@@ -34,3 +34,6 @@ export GPG_TTY
 
 # Default k8s config file
 export KUBECONFIG="$HOME/.kube/config";
+
+# Hide Brew hints
+export HOMEBREW_NO_ENV_HINTS=1;
