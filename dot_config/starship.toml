@@ -32,6 +32,7 @@ crust = "#11111b"
 
 [username]
 show_always = true
+format = '[$user]($style) at '
 
 [hostname]
 ssh_only = false
