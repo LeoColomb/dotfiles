@@ -51,6 +51,6 @@ complete -cf sudo
 ## https://github.com/ellie/atuin
 ##
 
-if [ -f /home/linuxbrew/.linuxbrew/bin/atuin ]; then
+if [ -x "$(command -v atuin)" ]; then
 	eval "$(atuin init bash)"
 fi
