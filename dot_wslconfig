@@ -3,6 +3,13 @@
 # Settings apply across all Linux distros running on WSL 2
 [wsl2]
 
+# If the value is mirrored then this turns on mirrored networking mode
+# Default or unrecognized strings result in NAT networking.
+networkingMode=mirrored
+
+# Changes how DNS requests are proxied from WSL to Windows
+dnsTunneling=true
+
 # Enforces WSL to use Windows’ HTTP proxy information
 autoProxy=true
 
