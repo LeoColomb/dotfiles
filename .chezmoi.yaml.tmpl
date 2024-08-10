@@ -44,16 +44,16 @@
 {{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
-sourceDir: "{{ .chezmoi.sourceDir }}"
+sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 data:
-  name: "{{ $name }}"
-  email: "{{ $email }}"
-  signingkey: "{{ $signingkey }}"
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
+  signingkey: {{ $signingkey | quote }}
 
   internal:
     jumphost:
-      name: "{{ $intJumpName }}"
-      port: "{{ $intJumpPort }}"
-    domain: "{{ $intDomain }}"
-    user: "{{ $intUser }}"
+      name: {{ $intJumpName | quote }}
+      port: {{ $intJumpPort | quote }}
+    domain: {{ $intDomain | quote }}
+    user: {{ $intUser | quote }}
