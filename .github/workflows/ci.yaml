@@ -4,11 +4,14 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   clone-and-install:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+      image: mcr.microsoft.com/devcontainers/base:ubuntu
       env:
         CODESPACES: true
     steps:
