@@ -11,4 +11,4 @@ permissions:
 jobs:
   dependabot:
     name: Dependabot
-    uses: YOURLS/.github/.github/workflows/auto-merge.yml@main
+    uses: LeoColomb/.github/.github/workflows/auto-merge.yml@main
