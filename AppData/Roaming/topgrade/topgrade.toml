@@ -1,0 +1,5 @@
+# https://github.com/topgrade-rs/topgrade
+
+[misc]
+# Ignore failures for these steps
+ignore_failures = ["containers"]
