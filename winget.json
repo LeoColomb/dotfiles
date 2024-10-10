@@ -1,27 +1,57 @@
 {
-	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-	"Sources": [{
-		"Packages": [
-			{ "PackageIdentifier": "Canonical.Ubuntu.2204" },
-			{ "PackageIdentifier": "Docker.DockerDesktop" },
-			{ "PackageIdentifier": "Mozilla.Firefox.DeveloperEdition" },
-			{ "PackageIdentifier": "Google.Chrome.Dev" },
-			{ "PackageIdentifier": "Microsoft.WindowsTerminal" },
-			{ "PackageIdentifier": "RustDesk.RustDesk" },
-			{ "PackageIdentifier": "VideoLAN.VLC" },
-			{ "PackageIdentifier": "twpayne.chezmoi" },
-			{ "PackageIdentifier": "Microsoft.VisualStudioCode" },
-			{ "PackageIdentifier": "Starship.Starship" },
-			{ "PackageIdentifier": "topgrade-rs.topgrade" },
-			{ "PackageIdentifier": "Logitech.OptionsPlus" },
-			{ "PackageIdentifier": "Microsoft.PowerShell" },
-			{ "PackageIdentifier": "Jabra.Direct" }
-		],
-		"SourceDetails": {
-			"Argument": "https://cdn.winget.microsoft.com/cache",
-			"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
-			"Name": "winget",
-			"Type": "Microsoft.PreIndexed.Package"
-		}
-	}]
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "Sources": [
+    {
+      "Packages": [
+        {
+          "PackageIdentifier": "Docker.DockerDesktop"
+        },
+        {
+          "PackageIdentifier": "Mozilla.Firefox.DeveloperEdition"
+        },
+        {
+          "PackageIdentifier": "Google.Chrome.Dev"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WindowsTerminal"
+        },
+        {
+          "PackageIdentifier": "RustDesk.RustDesk"
+        },
+        {
+          "PackageIdentifier": "VideoLAN.VLC"
+        },
+        {
+          "PackageIdentifier": "twpayne.chezmoi"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudioCode"
+        },
+        {
+          "PackageIdentifier": "Starship.Starship"
+        },
+        {
+          "PackageIdentifier": "topgrade-rs.topgrade"
+        },
+        {
+          "PackageIdentifier": "Logitech.OptionsPlus"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerShell"
+        },
+        {
+          "PackageIdentifier": "Jabra.Direct"
+        },
+        {
+          "PackageIdentifier": "tailscale.tailscale"
+        }
+      ],
+      "SourceDetails": {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      }
+    }
+  ]
 }
