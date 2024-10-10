@@ -13,6 +13,9 @@ LICENSE
 .brew
 .*rc
 *file
+{{- if ne (env "OneDrive") "" }}
+Documents
+{{- end }}
 {{- else }}
 .wslconfig
 AppData
