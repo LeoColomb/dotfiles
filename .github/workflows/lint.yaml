@@ -1,19 +1,20 @@
+# yamllint disable rule:document-start
 # https://docs.github.com/actions
 
-name: Lint Code Base
+name: Lint
 
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
-  packages: read
-  statuses: write
 
 jobs:
-  lint:
-    name: Code Base
+  super-linter:
+    name: Super Linter
     uses: LeoColomb/.github/.github/workflows/lint.yml@main

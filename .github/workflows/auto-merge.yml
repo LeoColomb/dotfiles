@@ -1,3 +1,4 @@
+# yamllint disable rule:document-start
 # https://docs.github.com/actions
 
 name: Auto-merge

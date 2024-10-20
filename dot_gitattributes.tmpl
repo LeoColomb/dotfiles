@@ -1,7 +1,10 @@
 # https://git-scm.com/docs/gitattributes
 
-# Automatically normalize line endings for all text-based files
-{{- if ne .chezmoi.os "darwin" }}
+# Auto detect text files and perform LF normalization
 * text=auto eol=lf
-{{- end }}
-# Disabled because of https://github.com/mathiasbynens/dotfiles/issues/149 :(
+
+# Collapse generated and vendored files on GitHub
+*.lock linguist-generated=true merge=ours
+
+# Reduce conflicts on markdown files
+*.md merge=union
