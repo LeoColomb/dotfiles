@@ -1,6 +1,6 @@
 # .files
 
-> 🔧 .files OS agnostic
+> 🔧 Operating-system agnostic dotfiles
 
 
 ## Usage
