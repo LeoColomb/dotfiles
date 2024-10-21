@@ -3,4 +3,5 @@
 
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 brew bundle install
+sudo ln -s $(brew list gcc | grep -w "bin/gcc-\d{2}$") /usr/bin/gcc
 {{- end }}
