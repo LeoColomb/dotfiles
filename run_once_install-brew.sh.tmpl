@@ -1,5 +1,5 @@
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
 #!/bin/bash
 
-$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 {{- end }}
