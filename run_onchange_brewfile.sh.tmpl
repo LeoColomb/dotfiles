@@ -1,0 +1,6 @@
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+#!/bin/bash
+
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+brew bundle install
+{{- end -}}

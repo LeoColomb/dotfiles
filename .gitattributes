@@ -15,3 +15,4 @@ dot_gitconfig.tmpl linguist-language=gitconfig
 dot_gitattributes.tmpl linguist-language=gitattributes
 dot_editorconfig linguist-language=editor-config
 *.yaml.tmpl linguist-language=yaml
+*.sh.tmpl linguist-language=bash
