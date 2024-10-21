@@ -1,0 +1,4 @@
+{{- if (eq .chezmoi.os "windows") -}}
+# winget.json hash: {{ include "winget.json" | sha256sum }}
+winget import --import-file winget.json --accept-package-agreements --accept-source-agreements --disable-interactivity
+{{- end }}
