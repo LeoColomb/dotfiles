@@ -54,9 +54,9 @@ alias ls="command ls ${colorflag}"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-if [ -x "$(command -v ripgrep)" ]; then
+if [ -x "$(command -v rg)" ]; then
 	# Use ripgrep if available
-	alias grep="ripgrep"
+	alias grep="rg"
 else
 	alias grep='grep --color=auto'
 fi
