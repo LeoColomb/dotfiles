@@ -50,7 +50,7 @@
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
 	untrackedCache = true
 	editor = code --wait
-{{- if env "CODESPACES" | not }}
+{{- if not .codespaces }}
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only --features=interactive
@@ -70,7 +70,7 @@
 [help]
 	autoCorrect = prompt
 
-{{- if env "CODESPACES" | not }}
+{{- if not .codespaces }}
 ## Local Workflow
 [user]
 {{-   if .name }}
@@ -133,7 +133,7 @@
 ## Remotes
 [remote "upstream"]
 	fetch = +refs/heads/*:refs/remotes/upstream/*
-{{- if env "CODESPACES" | not }}
+{{- if not .codespaces }}
 [url "git@gitlab.com:"]
 	insteadOf = "gitlab:"
 	pushInsteadOf = "git://gitlab.com/"

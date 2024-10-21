@@ -1,6 +1,7 @@
 # https://www.chezmoi.io/
 
 {{- /* Checks if running interactively, which is not the case for GitHub Codespaces */ -}}
+{{- $codespaces:= env "CODESPACES" | not | not -}}
 {{- $interactive := stdinIsATTY -}}
 
 {{- $name := "Your Name" -}}
@@ -49,6 +50,8 @@
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 data:
+  codespaces: {{ $codespaces }}
+
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   signingkey: {{ $signingkey | quote }}
