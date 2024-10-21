@@ -21,7 +21,6 @@ fi
 if [ -x "$(command -v brew)" ]; then
 	HOMEBREW_PREFIX="$(brew --prefix)"
 	if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
-		BASH_COMPLETION_COMPAT_DIR="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 		source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 	else
 		for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
@@ -54,8 +53,12 @@ fi
 ##
 
 # Enable tab completion for `g` by marking it as an alias for `git`
-if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+if type _git &> /dev/null && [ -f "${HOMEBREW_PREFIX}/etc/bash_completion.d/git-completion.bash" ]; then
 	complete -o default -o nospace -F _git g;
+fi
+# Enable tab completion for `k` by marking it as an alias for `kubectl`
+if type __start_kubectl &> /dev/null && [ -f "${HOMEBREW_PREFIX}/etc/bash_completion.d/kubectl" ]; then
+	complete -o default -o nospace -F __start_kubectl k;
 fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
