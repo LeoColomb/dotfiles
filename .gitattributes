@@ -11,8 +11,12 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-dot_gitconfig.tmpl linguist-language=gitconfig
-dot_gitattributes.tmpl linguist-language=gitattributes
+# Templates
 dot_editorconfig linguist-language=editor-config
+dot_gitattributes linguist-language=gitattributes
+dot_gitconfig.tmpl linguist-language=gitconfig
+Brewfile.tmpl linguist-language=ruby
 *.yaml.tmpl linguist-language=yaml
 *.sh.tmpl linguist-language=bash
+*.ps1.tmpl linguist-language=powershell
+*.json.tmpl linguist-language=json
