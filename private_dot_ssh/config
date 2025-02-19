@@ -4,5 +4,8 @@ Host *
     ForwardAgent yes
     ServerAliveCountMax 20
     ServerAliveInterval 30
+    ControlMaster auto
+    ControlPersist yes
+    ControlPath ~/.ssh/mux/%r@%h:%p
 
 Include config.d/*
