@@ -103,6 +103,8 @@
 	renames = copies
 	algorithm = histogram
 	context = 10
+	mnemonicPrefix = true
+	colorMoved = plain
 [diff "bin"]
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
@@ -112,7 +114,8 @@
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 	recurseSubmodules = check
-	default = current
+	default = simple
+	autoSetupRemote = true
 [pull]
 	rebase = true
 [rebase]
