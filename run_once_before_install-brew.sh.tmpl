@@ -2,6 +2,5 @@
 #!/bin/bash
 
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-brew bundle install
-sudo ln -s "$(brew list gcc | /usr/bin/grep -E "bin/gcc-[[:digit:]]{2}$")" /usr/bin/gcc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
