@@ -3,5 +3,5 @@
 
 # Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
 brew bundle install
-sudo ln -s "$(brew list gcc | /usr/bin/grep -E "bin/gcc-[[:digit:]]{2}$")" /usr/bin/gcc
+sudo ln -sf "$(brew list gcc | /usr/bin/grep -E "bin/gcc-[[:digit:]]{2}$")" /usr/bin/gcc
 {{- end }}
