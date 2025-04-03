@@ -23,13 +23,6 @@
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
 
-{{- $signingkey := "" -}}
-{{- if hasKey . "signingkey" -}}
-{{-   $signingkey = .signingkey -}}
-{{- else if $interactive -}}
-{{-   $signingkey = promptString "signing key" -}}
-{{- end -}}
-
 {{- $intDomain := "" -}}
 {{- $intUser := "" -}}
 {{- $intJumpName := "" -}}
@@ -54,7 +47,6 @@ data:
 
   name: {{ $name | quote }}
   email: {{ $email | quote }}
-  signingkey: {{ $signingkey | quote }}
 
   internal:
     jumphost:

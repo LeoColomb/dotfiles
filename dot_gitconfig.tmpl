@@ -79,24 +79,13 @@
 {{-   if .email }}
 	email = {{ .email }}
 {{-   end }}
-{{-   if .signingkey }}
-	signingKey = {{ .signingkey }}
-{{-   else }}
 	signingKey = ~/.ssh/id_ed25519.pub
-{{-   end }}
 [tag]
 	forceSignAnnotated = true
 [commit]
 	gpgSign = true
 [gpg]
-{{-   if .signingkey }}
-{{-     if eq .chezmoi.os "windows" }}
- 	program = "C:\\Program Files (x86)\\gnupg\\bin\\gpg.exe"
-{{-     end }}
-{{-   else }}
 	format = ssh
-{{-   end }}
-{{- end }}
 [diff]
 	#external = difft
 	# Detect copies as well as renames
