@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://github.com/derailed/k9s/raw/refs/heads/master/internal/config/json/schemas/aliases.json
+aliases:
+  dp: deployments
+  sec: v1/secrets
+  jo: jobs
+  cr: clusterroles
+  crb: clusterrolebindings
+  ro: roles
+  rb: rolebindings
+  np: networkpolicies

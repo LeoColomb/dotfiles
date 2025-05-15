@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://github.com/derailed/k9s/raw/refs/heads/master/internal/config/json/schemas/views.json
+views:
+  v1/pods@all:
+    sortColumn: NAMESPACE:asc
+    columns: []
+  v1/pods@nso*:
+    sortColumn: NAME:asc
+    columns:
+      - NAMESPACE|W
+      - NAME
+      - READY
+      - STATUS
+      - NCS-PHASE:.metadata.labels.ncs\.cisco\.com/phase|N
+      - NCS-STATUS:.metadata.labels.ncs\.cisco\.com/status
+      - NCS-ROLE:.metadata.labels.ncs\.cisco\.com/ha-role
+      - AGE|W
+      - NODE
+      - PF|W
+      - RESTARTS|W
+      - IP|H
+  v1/containers@nso*:
+    columns:
+      - IMAGE|H
