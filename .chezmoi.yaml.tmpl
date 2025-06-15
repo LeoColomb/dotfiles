@@ -26,12 +26,14 @@
 {{- $intDomain := "" -}}
 {{- $intUser := "" -}}
 {{- $intJumpName := "" -}}
+{{- $intJumpHost := "" -}}
 {{- $intJumpPort := "" -}}
 {{- if $interactive -}}
 {{-   $intDomain = promptString "internal domain" -}}
 {{-   if $intDomain -}}
 {{-     $intUser = promptString "internal user" -}}
 {{-     $intJumpName = promptString "internal jumphost name" -}}
+{{-     $intJumpHost = promptString "internal jumphost host" -}}
 {{-     $intJumpPort = promptString "internal jumphost port" -}}
 {{-   end -}}
 {{- end -}}
@@ -51,6 +53,7 @@ data:
   internal:
     jumphost:
       name: {{ $intJumpName | quote }}
+      host: {{ $intJumpHost | quote }}
       port: {{ $intJumpPort | quote }}
     domain: {{ $intDomain | quote }}
     user: {{ $intUser | quote }}
