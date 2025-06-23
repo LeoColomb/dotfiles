@@ -2,9 +2,8 @@
 #!/bin/bash
 
 {{- if (eq .chezmoi.osRelease.id "fedora") }}
-sudo dnf install git
+sudo dnf install curl git
 {{- end }}
 
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
