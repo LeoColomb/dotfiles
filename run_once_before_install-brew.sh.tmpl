@@ -1,7 +1,7 @@
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
 #!/bin/bash
 
-{{- if (eq .chezmoi.osRelease.id "fedora") -}}
+{{- if (eq .chezmoi.osRelease.id "fedora") }}
 sudo dnf install git
 {{- end }}
 
