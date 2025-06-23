@@ -2,6 +2,7 @@
 #!/bin/bash
 
 # Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew bundle install
 sudo ln -sf "$(brew list gcc | /usr/bin/grep -E "bin/gcc-[[:digit:]]{2}$")" /usr/bin/gcc
 {{- end }}
