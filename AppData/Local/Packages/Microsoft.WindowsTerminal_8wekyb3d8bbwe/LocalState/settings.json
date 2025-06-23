@@ -104,7 +104,7 @@
                 "cursorShape": "filledBox",
                 "guid": "{e7bf1283-000e-5edb-99e2-7bdb31e1308d}",
                 "hidden": false,
-                "name": "Fedora",
+                "name": "Fedora42",
                 "source": "Microsoft.WSL",
                 "tabTitle": "Fedora"
             }
