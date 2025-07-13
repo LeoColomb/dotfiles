@@ -7,6 +7,12 @@ disable = ["snap"]
 # Ignore failures for these steps
 ignore_failures = ["containers"]
 
+# Don't ask for confirmations (no default value)
+assume_yes = true
+
+# Do not ask to retry failed steps (default: false)
+no_retry = true
+
 [git]
 # How many repos to pull at max in parallel
 # max_concurrency = 5
