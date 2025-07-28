@@ -5,7 +5,7 @@
 ##
 
 # https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html
-export PROMPT_COMMAND=__bp_precmd_invoke_cmd __bp_interactive_mode;
+#export PROMPT_COMMAND=__bp_precmd_invoke_cmd __bp_interactive_mode;
 
 # Enable persistent REPL history for `node`.
 export NODE_REPL_HISTORY=~/.node_history;
