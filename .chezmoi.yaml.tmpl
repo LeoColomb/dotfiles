@@ -18,7 +18,7 @@
 {{- $interactive := stdinIsATTY -}}
 
 {{- if not $ephemeral -}}
-{{-   if stdinIsATTY -}}
+{{-   if $interactive -}}
 {{-     $personal = promptBoolOnce . "personal" "personal" -}}
 {{-     $work = promptBoolOnce . "work" "work" -}}
 {{-   else -}}
@@ -27,20 +27,22 @@
 {{-   end -}}
 {{- end -}}
 
+{{- $name := "" -}}
 {{- if (env "GIT_CONFIG_USER_NAME") -}}
-{{-   $name := env "GIT_CONFIG_USER_NAME" -}}
+{{-   $name = env "GIT_CONFIG_USER_NAME" -}}
 {{- else if $interactive -}}
-{{-   $name := promptStringOnce . "name" "name" -}}
+{{-   $name = promptStringOnce . "name" "name" -}}
 {{- else -}}
-{{-   $name := default "" .name -}}
+{{-   $name = default "" .name -}}
 {{- end -}}
 
+{{- $email := "" -}}
 {{- if (env "GIT_CONFIG_USER_EMAIL") -}}
-{{-   $email := env "GIT_CONFIG_USER_EMAIL" -}}
+{{-   $email = env "GIT_CONFIG_USER_EMAIL" -}}
 {{- else if $interactive -}}
-{{-   $email := promptStringOnce . "email" "email" -}}
+{{-   $email = promptStringOnce . "email" "email" -}}
 {{- else -}}
-{{-   $email := default "" .email -}}
+{{-   $email = default "" .email -}}
 {{- end -}}
 
 {{- $intDomain := "" -}}
