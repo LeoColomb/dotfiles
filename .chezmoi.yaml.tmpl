@@ -32,8 +32,8 @@
 {{-   $name = env "GIT_CONFIG_USER_NAME" -}}
 {{- else if $interactive -}}
 {{-   $name = promptStringOnce . "name" "name" -}}
-{{- else -}}
-{{-   $name = default "" .name -}}
+{{- else if hasKey . "name" -}}
+{{-   $name = .name -}}
 {{- end -}}
 
 {{- $email := "" -}}
@@ -41,8 +41,8 @@
 {{-   $email = env "GIT_CONFIG_USER_EMAIL" -}}
 {{- else if $interactive -}}
 {{-   $email = promptStringOnce . "email" "email" -}}
-{{- else -}}
-{{-   $email = default "" .email -}}
+{{- else if hasKey . "email" -}}
+{{-   $email = .email -}}
 {{- end -}}
 
 {{- $intDomain := "" -}}
