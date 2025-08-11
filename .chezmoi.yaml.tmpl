@@ -1,26 +1,46 @@
 # https://www.chezmoi.io/
 
+{{- /* Boolean feature tags */ -}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- "" -}}
+
+{{- /* Detects GitHub Codespaces, VSCode Remotes, Containers, etc. */ -}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
 {{- /* Checks if running interactively, which is not the case for GitHub Codespaces */ -}}
 {{- $codespaces:= env "CODESPACES" | not | not -}}
 {{- $interactive := stdinIsATTY -}}
 
-{{- $name := "Your Name" -}}
-{{- /* If name was previously set, reuses it */ -}}
-{{- if hasKey . "name" -}}
-{{-   $name = .name -}}
-{{- else if (env "GIT_CONFIG_USER_NAME") -}}
-{{-   $name = env "GIT_CONFIG_USER_NAME" -}}
-{{- else if $interactive -}}
-{{-   $name = promptString "name" $name -}}
+{{- if not $ephemeral -}}
+{{-   if stdinIsATTY -}}
+{{-     $personal = promptBoolOnce . "personal" "personal" -}}
+{{-     $work = promptBoolOnce . "work" "work" -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
+{{-   end -}}
 {{- end -}}
 
-{{- $email := "email@example.com" -}}
-{{- if hasKey . "email" -}}
-{{-   $email = .email -}}
-{{- else if (env "GIT_CONFIG_USER_EMAIL") -}}
-{{-   $email = env "GIT_CONFIG_USER_EMAIL" -}}
+{{- if (env "GIT_CONFIG_USER_NAME") -}}
+{{-   $name := env "GIT_CONFIG_USER_NAME" -}}
 {{- else if $interactive -}}
-{{-   $email = promptString "email" $email -}}
+{{-   $name := promptStringOnce . "name" "name" -}}
+{{- else -}}
+{{-   $name := default "" .name -}}
+{{- end -}}
+
+{{- if (env "GIT_CONFIG_USER_EMAIL") -}}
+{{-   $email := env "GIT_CONFIG_USER_EMAIL" -}}
+{{- else if $interactive -}}
+{{-   $email := promptStringOnce . "email" "email" -}}
+{{- else -}}
+{{-   $email := default "" .email -}}
 {{- end -}}
 
 {{- $intDomain := "" -}}
@@ -29,12 +49,12 @@
 {{- $intJumpHost := "" -}}
 {{- $intJumpPort := "" -}}
 {{- if $interactive -}}
-{{-   $intDomain = promptString "internal domain" -}}
+{{-   $intDomain = promptStringOnce . "intDomain" "internal domain" -}}
 {{-   if $intDomain -}}
-{{-     $intUser = promptString "internal user" -}}
-{{-     $intJumpName = promptString "internal jumphost name" -}}
-{{-     $intJumpHost = promptString "internal jumphost host" -}}
-{{-     $intJumpPort = promptString "internal jumphost port" -}}
+{{-     $intUser = promptStringOnce . "intUser" "internal user" -}}
+{{-     $intJumpName = promptStringOnce . "intJumpName" "internal jumphost name" -}}
+{{-     $intJumpHost = promptStringOnce . "intJumpHost" "internal jumphost host" -}}
+{{-     $intJumpPort = promptStringOnce . "intJumpPort" "internal jumphost port" -}}
 {{-   end -}}
 {{- end -}}
 
@@ -45,6 +65,10 @@
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 data:
+  ephemeral = {{ $ephemeral }}
+  work = {{ $work }}
+  headless = {{ $headless }}
+  personal = {{ $personal }}
   codespaces: {{ $codespaces }}
 
   name: {{ $name | quote }}
