@@ -2,7 +2,7 @@
 #!/bin/bash
 
 {{- if (eq .chezmoi.osRelease.id "fedora") }}
-sudo dnf install curl git
+sudo dnf install curl git-core
 {{- end }}
 
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
