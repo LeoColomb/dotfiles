@@ -22,7 +22,7 @@ brew "ssh-copy-id"
 brew "starship"
 brew "topgrade"
 
-{{- if not .kubernetes }}
+{{- if .kubernetes }}
 brew "kubernetes-cli"
 brew "k9s"
 brew "krew"
