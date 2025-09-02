@@ -22,6 +22,14 @@ brew "ssh-copy-id"
 brew "starship"
 brew "topgrade"
 
+{{- if not .kubernetes }}
+brew "kubernetes-cli"
+brew "k9s"
+brew "krew"
+brew "fluxcd/tap/flux"
+brew "siderolabs/tap/talosctl"
+{{- end }}
+
 {{- if eq .chezmoi.os "dariwn" }}
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"

@@ -21,6 +21,8 @@
 {{-   if $interactive -}}
 {{-     $personal = promptBoolOnce . "personal" "personal" -}}
 {{-     $work = promptBoolOnce . "work" "work" -}}
+{{-     $browserDev = promptBoolOnce . "browserDev" "browserDev" -}}
+{{-     $kubernetes = promptBoolOnce . "kubernetes" "kubernetes" -}}
 {{-   else -}}
 {{-     $ephemeral = true -}}
 {{-     $headless = true -}}
@@ -71,6 +73,8 @@ data:
   work: {{ $work }}
   headless: {{ $headless }}
   personal: {{ $personal }}
+  browserDev: {{ $browserDev }}
+  kubernetes: {{ $kubernetes }}
   codespaces: {{ $codespaces }}
 
   name: {{ $name | quote }}
