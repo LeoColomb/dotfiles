@@ -221,14 +221,12 @@ plugins:
     scopes:
       - all
     command: sh
-    background: false
     args:
       - -c
       - "kubectl get-all --context $CONTEXT -n $NAMESPACE | less -K"
   # Leverage stern (https://github.com/stern/stern) to output logs.
   stern:
     shortCut: Ctrl-Y
-    confirm: false
     description: Logs All
     scopes:
       - pods
@@ -242,3 +240,22 @@ plugins:
       - $NAMESPACE
       - --context
       - $CONTEXT
+  # Leverage hl (https://github.com/pamburus/hl) to output JSON logs.
+  jsonLogs:
+    shortCut: Shift-L
+    confirm: false
+    description: Logs Pretty JSON
+    scopes:
+      - daemonset
+      - deploy
+      - job
+      - pod
+      - replicaset
+      - service
+      - statefulset
+    command: sh
+    background: false
+    args:
+      - -c
+      - kubectl logs --follow --context="$CONTEXT" --namespace="$NAMESPACE" "$RESOURCE_NAME/$NAME" | hl --paging=never
+
