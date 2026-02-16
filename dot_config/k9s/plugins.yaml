@@ -257,7 +257,7 @@ plugins:
     background: false
     args:
       - -c
-      - kubectl logs --follow --context="$CONTEXT" --namespace="$NAMESPACE" "$RESOURCE_NAME/$NAME" | hl --paging=never
+      - kubectl logs --follow --context="$CONTEXT" --namespace="$NAMESPACE" "$RESOURCE_NAME/$NAME" | hl
   pvc-shell:
     shortCut: s
     confirm: true
