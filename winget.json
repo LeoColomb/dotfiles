@@ -41,9 +41,6 @@
         },
         {
           "PackageIdentifier": "RedHat.Podman-Desktop"
-        },
-        {
-          "PackageIdentifier": "Mozilla.Firefox.DeveloperEdition"
         }
       ],
       "SourceDetails": {
