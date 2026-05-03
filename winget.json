@@ -38,9 +38,6 @@
         },
         {
           "PackageIdentifier": "Starship.Starship"
-        },
-        {
-          "PackageIdentifier": "RedHat.Podman-Desktop"
         }
       ],
       "SourceDetails": {
