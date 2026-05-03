@@ -1,0 +1,9 @@
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+#!/bin/sh
+
+if [ ! -f "{{ .chezmoi.destDir }}/.config/chezmoi/key" ]; then
+    mkdir -p "{{ .chezmoi.destDir }}/.config/chezmoi"
+    chezmoi age decrypt --output "{{ .chezmoi.destDir }}/.config/chezmoi/key" --passphrase "{{ .chezmoi.sourceDir }}/key.age"
+    chmod 600 "{{ .chezmoi.destDir }}/.config/chezmoi/key"
+fi
+{{- end }}
