@@ -9,7 +9,6 @@ LICENSE
 key
 key.age
 
-
 .ssh/config.d/example
 
 {{- if ne .chezmoi.os "dariwn" }}
