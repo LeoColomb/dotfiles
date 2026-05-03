@@ -1,0 +1,6 @@
+{{- if (eq .chezmoi.os "windows") -}}
+if (-not (Test-Path -Path "{{ .chezmoi.destDir }}/.config/chezmoi/key" -PathType Leaf)) {
+    New-Item -Path "{{ .chezmoi.destDir }}/.config/chezmoi" -ItemType "Directory"
+    chezmoi age decrypt --output "{{ .chezmoi.destDir }}/.config/chezmoi/key" --passphrase "{{ .chezmoi.sourceDir }}/key.age"
+}
+{{- end }}

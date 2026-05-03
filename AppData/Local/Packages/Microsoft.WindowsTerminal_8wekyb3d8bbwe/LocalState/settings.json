@@ -54,7 +54,8 @@
             "closeOnExit": "graceful",
             "font": 
             {
-                "face": "JetBrains Mono"
+                "face": "JetBrains Mono",
+                "size": 13
             },
             "padding": "50"
         },
