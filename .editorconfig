@@ -10,5 +10,5 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{yml,yaml,json,md}]
+[*.{yml,yaml,json,md,yml.tmpl,yaml.tmpl,json.tmpl}]
 indent_size = 2
