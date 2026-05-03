@@ -10,6 +10,9 @@ key
 key.age
 
 .ssh/config.d/example
+{{- if not .encryption }}
+.ssh/config.d/*
+{{- end }}
 
 {{- if ne .chezmoi.os "dariwn" }}
 .macos
