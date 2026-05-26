@@ -12,6 +12,8 @@ key.age
 .ssh/config.d/example
 {{- if not .encryption }}
 .ssh/config.d/*
+.talos/config
+.kube/config
 {{- end }}
 
 {{- if ne .chezmoi.os "dariwn" }}
