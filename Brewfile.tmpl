@@ -32,7 +32,8 @@ tap "siderolabs/tap"
 brew "siderolabs/tap/talosctl"
 {{- end }}
 
-{{- if eq .chezmoi.os "dariwn" }}
+{{- if .personal }}
+{{-   if eq .chezmoi.os "dariwn" }}
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
@@ -45,4 +46,15 @@ cask "podman-desktop"
 cask "firefox@developer-edition"
 cask "google-chrome@dev"
 cask "visual-studio-code"
+{{-   else }}
+flatpak "com.brave.Browser"
+flatpak "dev.zed.Zed"
+flatpak "com.visualstudio.code"
+flatpak "io.podman_desktop.PodmanDesktop"
+flatpak "io.github.pwr_solaar.solaar"
+flatpak "me.iepure.devtoolbox"
+flatpak "com.rustdesk.RustDesk"
+flatpak "io.anytype.anytype"
+{{-   end }}
 {{- end }}
+
