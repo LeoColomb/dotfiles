@@ -15,7 +15,7 @@ fi
 ##
 
 # Add tab completion for many Bash commands
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+if [[ -z "${HOMEBREW_PREFIX:-}" && -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 if [ -x "$(command -v brew)" ]; then
@@ -26,6 +26,7 @@ if [ -x "$(command -v brew)" ]; then
 		for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
 			[[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
 		done
+		unset COMPLETION
 	fi
 fi
 
